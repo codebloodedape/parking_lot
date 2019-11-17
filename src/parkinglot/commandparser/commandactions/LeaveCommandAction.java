@@ -6,6 +6,7 @@ import parkinglot.datastructure.Command;
 public class LeaveCommandAction extends CommandAction {
 	String identifier = "LEAVE";
 	
+	@Override
 	public boolean execute(Command command)
     {
         String[] queryStringParts = command.inputText.split(" ");
