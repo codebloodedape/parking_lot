@@ -1,6 +1,6 @@
 package parkinglot.datastructure;
 
-public class Query {
+public class Command {
 	
     /**
      * InputText contains the string of a specific type, that is to be parsed
@@ -16,7 +16,7 @@ public class Query {
      * Initializes an object of Query
      * @param inputText Input text to be parsed
      */
-    public Query(String inputText)
+    public Command(String inputText)
     {
         this.inputText = inputText;
         this.outputText = "";

@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+import parkinglot.commandparser.CommandParser;
+import parkinglot.datastructure.Command;
+
 public class ConsoleInterface {
 
 	/**
@@ -42,7 +45,7 @@ public class ConsoleInterface {
 				Scanner fileScanner = new Scanner(new File(commandFilePath));
 				System.out.println("Commands/Queries are read from " + commandFilePath + ".");
 				while (fileScanner.hasNextLine()) {
-					String line = fileScanner.nextLine();
+					String line = fileScanner.nextLine().trim();
 					System.out.println(line);
 					processQuery(line);
 				}
@@ -52,13 +55,23 @@ public class ConsoleInterface {
 				System.out.println("The file " + commandFilePath + " could not be founud. "
 						+ "Check if the command file exists in the specified location before "
 						+ "restarting this application.");
-				e.printStackTrace();
 			}
         }
 	}
 	
 	private static void processQuery(String line)
     {
-		System.out.println("Executing query " + line);
+		CommandParser parser = new CommandParser();
+		Command command = new Command(line);
+        parser.setCommand(command);
+
+        boolean result = parser.parse();
+        
+        if (command.outputText != "")
+        	System.out.println(command.outputText);
+        else {
+        	if (!result)
+        		System.out.println("Could not parse the command");
+        }
     }
 }
