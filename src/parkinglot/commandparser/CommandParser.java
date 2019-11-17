@@ -14,7 +14,6 @@ public class CommandParser {
 	 * This also creates chain or operation
 	 */
 	public CommandParser() {
-		// TODO update chain item here once its class is implemented
 		commandAction = new CreateParkingLotCommandAction();
 	}
 
