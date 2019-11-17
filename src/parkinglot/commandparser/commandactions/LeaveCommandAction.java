@@ -3,7 +3,7 @@ package parkinglot.commandparser.commandactions;
 import parkinglot.commandparser.commandaction.CommandAction;
 import parkinglot.datastructure.Command;
 
-public class LeaveCommandAction extends CommandAction  {
+public class LeaveCommandAction extends CommandAction {
 	String identifier = "LEAVE";
 	
 	public boolean execute(Command command)

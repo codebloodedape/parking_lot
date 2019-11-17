@@ -4,6 +4,7 @@ import parkinglot.commandparser.commandaction.CommandAction;
 import parkinglot.commandparser.commandactions.CreateParkingLotCommandAction;
 import parkinglot.commandparser.commandactions.LeaveCommandAction;
 import parkinglot.commandparser.commandactions.ParkVehicleCommandAction;
+import parkinglot.commandparser.commandactions.StatusCommandAction;
 import parkinglot.datastructure.Command;
 
 public class CommandParser {
@@ -12,6 +13,7 @@ public class CommandParser {
 	private CommandAction createParkingLotCommandAction;
 	private CommandAction parkVehicleCommandAction;
 	private CommandAction leaveCommandAction;
+	private CommandAction statusCommandAction;
 
 	/**
 	 * Initializes an object of CommandParser.
@@ -21,9 +23,11 @@ public class CommandParser {
 		createParkingLotCommandAction = new CreateParkingLotCommandAction();
 		parkVehicleCommandAction = new ParkVehicleCommandAction();
 		leaveCommandAction = new LeaveCommandAction();
+		statusCommandAction = new StatusCommandAction();
 		
 		createParkingLotCommandAction.setNextCommandAction(parkVehicleCommandAction);
 		parkVehicleCommandAction.setNextCommandAction(leaveCommandAction);
+		leaveCommandAction.setNextCommandAction(statusCommandAction);
 	}
 
 	/**
