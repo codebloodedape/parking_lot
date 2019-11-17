@@ -1,1 +1,1 @@
-java -cp bin parkingsystem.Interface
+java -cp bin parkinglot.ConsoleInterface

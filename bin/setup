@@ -1,1 +1,1 @@
-javac -d bin src/parkingsystem/Interface.java
+javac -d bin src/parkinglot/ConsoleInterface.java
