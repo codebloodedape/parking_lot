@@ -46,6 +46,7 @@ public class ConsoleInterface {
 					System.out.println(line);
 					processQuery(line);
 				}
+				System.out.println("Exiting.");
 				fileScanner.close();
 			} catch (FileNotFoundException e) {
 				System.out.println("The file " + commandFilePath + " could not be founud. "

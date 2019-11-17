@@ -1,3 +1,6 @@
+# Data Folder #
+data/
+
 # Eclipse files #
 #################
 *.classpath
