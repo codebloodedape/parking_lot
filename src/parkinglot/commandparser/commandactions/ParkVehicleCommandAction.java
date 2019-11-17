@@ -10,11 +10,9 @@ public class ParkVehicleCommandAction extends CommandAction {
     public boolean execute(Command command)
     {
         String[] queryStringParts = command.inputText.split(" ");
-
         if (queryStringParts.length == 3 && queryStringParts[0].trim().equalsIgnoreCase(identifier))
         {
             int slotNumber = -1;
-            
             // TODO implement BL
             
             if (slotNumber != -1)

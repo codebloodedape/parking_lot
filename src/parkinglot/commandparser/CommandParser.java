@@ -2,21 +2,28 @@ package parkinglot.commandparser;
 
 import parkinglot.commandparser.commandaction.CommandAction;
 import parkinglot.commandparser.commandactions.CreateParkingLotCommandAction;
+import parkinglot.commandparser.commandactions.LeaveCommandAction;
 import parkinglot.commandparser.commandactions.ParkVehicleCommandAction;
 import parkinglot.datastructure.Command;
 
 public class CommandParser {
 
 	private Command command;
-	private CommandAction commandAction;
+	private CommandAction createParkingLotCommandAction;
+	private CommandAction parkVehicleCommandAction;
+	private CommandAction leaveCommandAction;
 
 	/**
 	 * Initializes an object of CommandParser.
 	 * This also creates chain or operation
 	 */
 	public CommandParser() {
-		commandAction = new CreateParkingLotCommandAction();
-		commandAction.setNextCommandAction(new ParkVehicleCommandAction());
+		createParkingLotCommandAction = new CreateParkingLotCommandAction();
+		parkVehicleCommandAction = new ParkVehicleCommandAction();
+		leaveCommandAction = new LeaveCommandAction();
+		
+		createParkingLotCommandAction.setNextCommandAction(parkVehicleCommandAction);
+		parkVehicleCommandAction.setNextCommandAction(leaveCommandAction);
 	}
 
 	/**
@@ -33,7 +40,7 @@ public class CommandParser {
 	 */
 	public boolean parse() {
 		
-		CommandAction currentCommandAction = commandAction;
+		CommandAction currentCommandAction = createParkingLotCommandAction;
 		
 		if (currentCommandAction == null)
 			return false;
