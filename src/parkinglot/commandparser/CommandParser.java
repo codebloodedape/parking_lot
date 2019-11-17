@@ -2,6 +2,7 @@ package parkinglot.commandparser;
 
 import parkinglot.commandparser.commandaction.CommandAction;
 import parkinglot.commandparser.commandactions.CreateParkingLotCommandAction;
+import parkinglot.commandparser.commandactions.ParkVehicleCommandAction;
 import parkinglot.datastructure.Command;
 
 public class CommandParser {
@@ -15,6 +16,7 @@ public class CommandParser {
 	 */
 	public CommandParser() {
 		commandAction = new CreateParkingLotCommandAction();
+		commandAction.setNextCommandAction(new ParkVehicleCommandAction());
 	}
 
 	/**
