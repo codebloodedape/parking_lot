@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import parkinglot.commandparser.CommandParser;
 import parkinglot.datastructure.Command;
 
-class CreateParkingLotCommandActionTest {
+public class CreateParkingLotCommandActionTest {
 	@Test
 	void testParkingLotCreationCommand() {
 		CommandParser parser = new CommandParser();

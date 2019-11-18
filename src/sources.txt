@@ -13,4 +13,3 @@ src\parkinglot\commandparser\commandactions\SlotNumbersFromColorCommandAction.ja
 src\parkinglot\commandparser\commandactions\StatusCommandAction.java
 src\parkinglot\commandparser\CommandParser.java
 src\parkinglot\ConsoleInterface.java
-
