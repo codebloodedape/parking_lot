@@ -1,6 +1,9 @@
 package parkinglot.commandparser.commandactions;
 
+import java.util.List;
+
 import parkinglot.commandparser.commandaction.CommandAction;
+import parkinglot.datamanager.DataManager;
 import parkinglot.datastructure.Command;
 
 public class StatusCommandAction extends CommandAction {
@@ -11,11 +14,11 @@ public class StatusCommandAction extends CommandAction {
     {
 		if (command.inputText.equalsIgnoreCase(identifier))
         {
-			String []filledSlots = new String[1];
-            //TODO implement BL
-			if (filledSlots.length > 0) {
+			List<String> filledSlots = DataManager.getStatus();
+            
+			if (filledSlots.size() > 0) {
 				StringBuilder outputText = new StringBuilder();
-	            outputText.append("Slot No.\tRegistration No\tColour\n");
+	            outputText.append("Slot No.\t\tRegistration No.\t\tColour");
 	            
 	            for (String filledSlot : filledSlots)
 	                outputText.append(filledSlot);
@@ -23,7 +26,7 @@ public class StatusCommandAction extends CommandAction {
 	            command.outputText = outputText.toString();	
 			}
 			else
-				command.outputText = "No records found";
+				command.outputText = "Not Found";
 			
             return true;
         }

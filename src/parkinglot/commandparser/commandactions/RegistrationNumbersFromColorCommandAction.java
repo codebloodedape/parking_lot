@@ -1,6 +1,9 @@
 package parkinglot.commandparser.commandactions;
 
+import java.util.List;
+
 import parkinglot.commandparser.commandaction.CommandAction;
+import parkinglot.datamanager.DataManager;
 import parkinglot.datastructure.Command;
 
 public class RegistrationNumbersFromColorCommandAction extends CommandAction {
@@ -13,7 +16,20 @@ public class RegistrationNumbersFromColorCommandAction extends CommandAction {
 
         if (queryStringParts.length == 2 && queryStringParts[0].trim().equalsIgnoreCase(identifier))
         {
-        	// TODO implement BL
+        	List<String> registrationNumberList = DataManager.getRegistrationNumbersBasedOnVehicleColor(queryStringParts[1].trim());
+            if (registrationNumberList.size() > 0)
+            {
+                StringBuilder outputText = new StringBuilder();
+
+                for (String registrationNumber : registrationNumberList)
+                    outputText.append(registrationNumber + ", ");
+
+                outputText.delete(outputText.length() - 2, outputText.length() - 1);
+                command.outputText = outputText.toString();
+            }
+            else
+            	command.outputText = "Not Found";
+            
             return true;
         }
 		return false;

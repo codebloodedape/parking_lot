@@ -1,6 +1,7 @@
 package parkinglot.commandparser.commandactions;
 
 import parkinglot.commandparser.commandaction.CommandAction;
+import parkinglot.datamanager.DataManager;
 import parkinglot.datastructure.Command;
 
 public class ParkVehicleCommandAction extends CommandAction {
@@ -12,9 +13,7 @@ public class ParkVehicleCommandAction extends CommandAction {
         String[] queryStringParts = command.inputText.split(" ");
         if (queryStringParts.length == 3 && queryStringParts[0].trim().equalsIgnoreCase(identifier))
         {
-            int slotNumber = -1;
-            // TODO implement BL
-            
+            int slotNumber = DataManager.parkVehicle(queryStringParts[1].trim(), queryStringParts[2].trim());
             if (slotNumber != -1)
             	command.outputText = "Allocated slot number: " + slotNumber;
             else

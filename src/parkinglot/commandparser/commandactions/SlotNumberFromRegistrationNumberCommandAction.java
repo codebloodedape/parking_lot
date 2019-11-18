@@ -1,6 +1,7 @@
 package parkinglot.commandparser.commandactions;
 
 import parkinglot.commandparser.commandaction.CommandAction;
+import parkinglot.datamanager.DataManager;
 import parkinglot.datastructure.Command;
 
 public class SlotNumberFromRegistrationNumberCommandAction extends CommandAction {
@@ -13,7 +14,8 @@ public class SlotNumberFromRegistrationNumberCommandAction extends CommandAction
 
         if (queryStringParts.length == 2 && queryStringParts[0].trim().equalsIgnoreCase(identifier))
         {
-        	// TODO implement BL
+        	int slotNumber = DataManager.getSlotNumberBasedOnVehicleRegistrationNumber(queryStringParts[1].trim());
+        	command.outputText = slotNumber == -1 ? "Not found" : Integer.toString(slotNumber);
             return true;
         }
 		return false;

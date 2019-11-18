@@ -60,8 +60,8 @@ public class DataManager {
         for (ParkingSlot slot : parkingLot.getSlots())
         {
             if (!slot.isAvailable())
-                filledSlots.add(slot.getSlotNumber() + "\t" + slot.getVehicle().getRegistrationNumber() + 
-                		"\t" + slot.getVehicle().getColor());
+                filledSlots.add("\n" + slot.getSlotNumber() + "\t\t" + slot.getVehicle().getRegistrationNumber() + 
+                		"\t\t" + slot.getVehicle().getColor());
         }
         
         return filledSlots;
@@ -78,7 +78,7 @@ public class DataManager {
 
         for (ParkingSlot slot : parkingLot.getSlots())
         {
-            if (!slot.isAvailable() && slot.getVehicle().getColor() == color)
+            if (!slot.isAvailable() && slot.getVehicle().getColor().equalsIgnoreCase(color))
                 registrationNumbers.add(slot.getVehicle().getRegistrationNumber());
         }
 
@@ -96,7 +96,7 @@ public class DataManager {
 
         for (ParkingSlot slot : parkingLot.getSlots())
         {
-            if (!slot.isAvailable() && slot.getVehicle().getColor() == color)
+            if (!slot.isAvailable() && slot.getVehicle().getColor().equalsIgnoreCase(color))
                 slotNumbers.add(slot.getSlotNumber());
         }
 
@@ -112,7 +112,7 @@ public class DataManager {
     {
         for (ParkingSlot slot : parkingLot.getSlots())
         {
-            if (slot.getVehicle().getRegistrationNumber() == registrationNumber)
+            if (slot.getVehicle().getRegistrationNumber().equalsIgnoreCase(registrationNumber))
                 return slot.getSlotNumber();
         }
 

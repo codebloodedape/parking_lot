@@ -1,6 +1,7 @@
 package parkinglot.commandparser.commandactions;
 
 import parkinglot.commandparser.commandaction.CommandAction;
+import parkinglot.datamanager.DataManager;
 import parkinglot.datastructure.Command;
 
 public class LeaveCommandAction extends CommandAction {
@@ -21,9 +22,7 @@ public class LeaveCommandAction extends CommandAction {
         				". Please provide a proper number.";
         		return false;
         	}
-        	int slotNumber = -1;
-        	// TODO implement BL
-
+        	int slotNumber = DataManager.leave(value);
             if (slotNumber != -1)
             	command.outputText = "Slot number " + slotNumber + " is free";
             else
